@@ -1,0 +1,4 @@
+cc65 %c
+--standard c99
+-Isource/include/
+-Ibuild/assets/

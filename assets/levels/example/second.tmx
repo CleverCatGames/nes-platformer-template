@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="115">
+ <properties>
+  <property name="dark" type="bool" value="false"/>
+  <property name="liquid" value="toxic"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/example.tsx"/>
+ <tileset firstgid="28" source="../../tilesets/objects.tsx"/>
+ <layer id="1" name="background" width="64" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzFldsOgyAMQFnN2JYsbvv/nx0PmjSE3gs+nGikVk6LAKUUaNyC3BmiuWcCBv+PswbefBnvSPEWfyn/6Vudve/nuqI+Uf8RNTkf5eWpj8Z/P6CeSd+d4Z/V80fjOfDvfTVsB6+Oiu6j883m2/gJ/dfOdzOwqr97hzQW2f+z/bm5zwKvf+3/vbr/njppHaz7P67VKv+MNUGdrZL/6H/B41V5lXqYtd6j5/+5b1M1ARSn9efOgoiL1pWLA4b3AC5eQ7RfVLwlD4692v9q/r8uCP8=
+  </data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="100" name="first" gid="28" x="960" y="96" width="16" height="16">
+   <properties>
+    <property name="alternate" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="110" gid="30" x="352" y="96" width="16" height="16"/>
+  <object id="111" gid="30" x="208" y="192" width="16" height="16"/>
+  <object id="113" gid="31" x="752" y="128" width="16" height="16"/>
+  <object id="114" gid="31" x="560" y="112" width="16" height="16"/>
+ </objectgroup>
+</map>

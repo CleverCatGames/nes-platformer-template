@@ -1,0 +1,3 @@
+name,gfx,gfx_bank,zone,zone_object,spr_pal1,spr_pal2
+name,func,u8,tileset,chr,addr,addr
+example,example,BANK_EXAMPLE,example,object_example,pal_npc,pal_enemy

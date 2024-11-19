@@ -1,0 +1,26 @@
+# Level Definition
+# -----------------
+
+# Order matters for left/right rooms. Exiting the left side of a room will go
+# to the previous level. Exiting right goes down the list.
+# Similar with down/up respectively.
+
+# Defines will be created with the name of the level. This means level files
+# must have unique names to prevent conflicts.
+# Example: zone/name becomes LVL_NAME
+
+# There is a maximum of 64 levels due to saving constraints.
+# The upper bit of the level is used for an alternate entrance/exit.
+
+# The starting room is denoted with ">" at the beginning of the line.
+
+# Starting a room with "@" will use the level for debugging
+# Debug rooms can also have a number after the sign for the starting page.
+# For example "@zone/level" would start on the fourth page
+
+# -----------------
+# Levels
+# -----------------
+>example/first
+example/second
+

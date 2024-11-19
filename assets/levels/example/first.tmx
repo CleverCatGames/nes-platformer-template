@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="112">
+ <properties>
+  <property name="dark" type="bool" value="false"/>
+  <property name="liquid" value="water"/>
+ </properties>
+ <tileset firstgid="1" source="../../tilesets/example.tsx"/>
+ <tileset firstgid="28" source="../../tilesets/objects.tsx"/>
+ <layer id="1" name="background" width="64" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzdleEOwiAMhBE2dBo39f0f1i2B5NK1tCDTxB+XTQblvrZgcM4FRac/lsZ+NP+YVLNm+RH/nKR5qWEaK+f3iIVzLPxTw/6Sj6Vyfgu7FgvnWPp9JurhAdfEjuxR2Zv6k/ilMza5fT9w3DX1jMp37bxb2Wv4OUk9wO1v8ZLzGZmcajqvugj7Y2ytThq7xReNGZkxae2QFJz9nG16rHoSD9hHm2+fVKpVib/khfbkJ/whPa21l/KE/B5yS3OAc4/4j5fuM5ozZM/vteeAY0L2Hvxcvrl7kKtDSZQ9e301Kvc7cmfdQQPZF/knV2ZD71zeIvBrsSg7er6uuqUnvuMY/e0LGgQFt68DrpHWe2Yu/e4hPncXcf1fYmiRxE35sf88GbfE5Hi5ulr6/5v8bzLkCxw=
+  </data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="100" name="second" gid="28" x="736" y="128" width="16" height="16">
+   <properties>
+    <property name="alternate" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="104" gid="29" x="464" y="128" width="16" height="16">
+   <properties>
+    <property name="range" value="S,E"/>
+   </properties>
+  </object>
+  <object id="107" gid="29" x="320" y="160" width="16" height="16">
+   <properties>
+    <property name="range" value="S,C"/>
+   </properties>
+  </object>
+  <object id="110" gid="30" x="144" y="160" width="16" height="16"/>
+  <object id="111" gid="31" x="368" y="192" width="16" height="16"/>
+ </objectgroup>
+</map>

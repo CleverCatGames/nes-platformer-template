@@ -1,0 +1,4 @@
+name,trigger_spawn
+ignore,func
+level_zone,level_zone
+camera_lock,normal

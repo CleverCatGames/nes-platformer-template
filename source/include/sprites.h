@@ -1,0 +1,12 @@
+#ifndef SPRITES_H
+#define SPRITES_H
+
+#define SNEXT(_SPR, _OFF) ((_SPR) + ((_OFF) * 2))
+
+#define SPRITE_PLAYER      0x01
+#define SPRITE_SLIDE_DUST  SNEXT(SPRITE_PLAYER, 8)
+#define SPRITE_HEALTH      SNEXT(SPRITE_SLIDE_DUST, 1)
+
+#define SPRITE_ENEMY       SNEXT(SPRITE_PLAYER, 16)
+
+#endif // SPRITES_H

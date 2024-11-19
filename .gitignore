@@ -1,0 +1,16 @@
+# generated files
+*.o
+*.lib
+*.pyc
+*.log
+*.tiled-session
+build/
+.ccls-cache/
+
+.vscode/settings.json
+.vscode/*.log
+/compile_commands.json
+
+# OS files
+.DS_Store
+Thumbs.db

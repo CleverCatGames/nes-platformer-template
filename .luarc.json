@@ -1,0 +1,9 @@
+{
+    "diagnostics": {
+        "enable": true,
+        "globals": [ "emu", "memory", "gui", "input", "AND", "OR" ]
+    },
+    "runtime": {
+        "version": "LuaJIT"
+    }
+}

@@ -1,0 +1,4 @@
+name,genre,obj_width,obj_height,spawn,draw,move,collide
+ignore,group,u8,u8,func,func,func,func
+npc,_global,16,16,normal,npc,walking,ignore
+enemy,example,16,16,normal,enemy,enemy,stomp
