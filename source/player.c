@@ -12,10 +12,13 @@ extern u8 player_animation;
 extern u8 player_animation_len;
 extern u8 player_health;
 extern u8 player_health_max;
+extern u8 player_air;
 extern u8 player_tile;
 
 #define HEALTH_MAXIMUM 16 // absolute upper limit of health
 #define HEALTH_INITIAL 3
+
+#define AIR_MAXIMUM 10
 
 #define PLAYER_JUMP_STATE (PLAYER_STATE_PLATFORM | PLAYER_STATE_ON_GROUND | PLAYER_STATE_IN_LIQUID)
 #define COYOTE_JUMP_TIME (0xFF - 5)
@@ -35,6 +38,7 @@ void player_init(void)
 void player_reset(void) {
     player_animation = player_animation_len = player_frame = 0;
 
+    player_air = AIR_MAXIMUM;
     player_state = 0;
     player_velocity_x = player_velocity_y = 0;
     player_x = 64;
@@ -455,6 +459,14 @@ void do_water(void)
     {
         player_velocity_y = MAX_WATER_DOWN_VELOCITY;
     }
+
+    // consume air
+    if ((frame_counter & 0x3F) == 0) {
+        --player_air;
+        if (player_air == 0) {
+            player_kill();
+        }
+    }
 }
 
 // handle liquids (quicksand and water) for player movement
@@ -640,30 +652,49 @@ void do_input(void)
     do_jump();
 }
 
-const u8 dead_offset[] = {32, 26, 28, 30, 22, 12, 18, 14, 10, 8};
-
-void health_draw(void)
-{
-    oam_x = 24;
-    oam_y = 40;
-    oam_attr = OAM_PAL1;
-    if (player_health == 1) {
+void draw_meter(void) {
+    #define value tmp5
+    if (value == 1) {
         tmp1 = (frame_counter & 0x04) >> 1;
         --tmp1;
         oam_x += tmp1;
-    } else if (player_health == 2 && player_health != player_health_max) {
+    } else if (value == 2) {
         tmp1 = (frame_counter & 0x08) >> 2;
         --tmp1;
         oam_x += tmp1;
     } else {
-        tmp1 = player_health - 3;
+        tmp1 = value - 3;
+        // loop until byte wraps around to a high value
         while (tmp1 < HEALTH_MAXIMUM) {
-            oam_draw(SPRITE_HEALTH);
+            oam_draw(oam_tile);
             oam_y += 16;
             tmp1 -= 2;
         }
     }
-    oam_draw(((player_health & 1) << 1) + SPRITE_HEALTH);
+    oam_draw(((value & 1) << 1) + oam_tile);
+    #undef value
+}
+
+void air_draw(void) {
+    if (player_air == AIR_MAXIMUM) return;
+
+    oam_x = 14;
+    oam_y = 40;
+    oam_tile = SPRITE_AIR;
+    oam_attr = OAM_PAL3;
+
+    tmp5 = player_air;
+    draw_meter();
+}
+
+void health_draw(void) {
+    oam_x = 24;
+    oam_y = 40;
+    oam_attr = OAM_PAL1;
+
+    oam_tile = SPRITE_HEALTH;
+    tmp5 = player_health;
+    draw_meter();
 }
 
 void player_update(void)
@@ -680,6 +711,16 @@ void player_update(void)
         // no liquid, don't process it!
         if (BIT_ON(level_flags, LEVEL_FLAGS_LIQUID_MASK)) {
             do_liquid();
+
+            // recover all air
+            if (BIT_OFF(player_state, PLAYER_STATE_IN_LIQUID)) {
+                if ((frame_counter & 0xf) == 0) {
+                    ++player_air;
+                    if (AIR_MAXIMUM < player_air) {
+                        player_air = AIR_MAXIMUM;
+                    }
+                }
+            }
         }
 
         do_move_y();
@@ -688,6 +729,7 @@ void player_update(void)
         player_draw();
 
         health_draw();
+        air_draw();
         BIT_CLEAR(player_state, PLAYER_STATE_INTERACT|PLAYER_STATE_PLATFORM);
     }
 }

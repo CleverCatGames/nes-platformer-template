@@ -92,6 +92,7 @@ u8 player_animation;
 u8 player_animation_len;
 u8 player_health;
 u8 player_health_max;
+u8 player_air;
 u8 player_damage; // how much damage the player will take
 u8 player_invincible_timer;
 u8 player_jump_timer;
